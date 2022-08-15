@@ -22,6 +22,7 @@ $colors: (
   c-lime: #bbff99,
   c-star_yellow: #f4fb33,
   c-orange: #ffcc66,
+  c-gold: #ad7d52,
   c-orange_adventure: #d9583b,
   c-salmon: #f77062,
   c-light_grey: #eeeed7,
@@ -31,6 +32,7 @@ $colors: (
   c-red_adventure: #8c0303,
   c-resume_red: #ff3048,
   c-grey_dark: #333,
+  c-grey_medium: #868686,
   c-grey_adventure: #d9d9d9,
   c-grey: #e0e0e0,
   c-grey_yellow: #eeeed7,
@@ -42,6 +44,7 @@ $colors: (
   c-orange_to_pink: linear-gradient(to top, #ffcc66 0%, #ff99ff 100%),
   c-black_to_red_adventure:
     linear-gradient(to top, #131313 0%, #8c0303 30%, #8c0303 60%, #131313 100%),
+    c-grey_to_gold: linear-gradient(to right top, #868686 0%, #ad7d52 30%, #ad7d52 60%, #868686 100%),
   mybrary-c-background_dark: hsl($mybrary-c-base_hue, 100%, 8%),
   mybrary-c-background_light: hsl($mybrary-c-base_hue, 100%, 16%),
   mybrary-c-text_light: hsl($mybrary-c-base_hue, 100%, 87%),
