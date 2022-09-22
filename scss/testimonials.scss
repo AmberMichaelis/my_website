@@ -154,9 +154,15 @@ body {
 }
 
 .timeline__header {
-  border-top: 1px solid color(c-royalblue);
+  border-top: 1px solid color(c-pink);
   border-bottom: 6px solid color(c-pink);
+  border-right: 2px solid color(c-grey_dark);
+  border-left: 2px solid color(c-grey_dark);
+  // background-color: color(c-grey_dark);
   border-radius: 30px;
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
 }
 
 .timeline__header h1 {
@@ -171,7 +177,7 @@ body {
   align-items: center;
   font-size: 3rem;
   position: relative;
-  margin: 5% 10%;
+  margin: 2% 10%;
   text-align: center;
 }
 

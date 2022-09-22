@@ -123,9 +123,14 @@ body {
 }
 
 .timeline__header {
-  border-top: 1px solid #0091ff;
+  border-top: 1px solid #ff99ff;
   border-bottom: 6px solid #ff99ff;
+  border-right: 2px solid #333;
+  border-left: 2px solid #333;
   border-radius: 30px;
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
 }
 
 .timeline__header h1 {
@@ -148,7 +153,7 @@ body {
           align-items: center;
   font-size: 3rem;
   position: relative;
-  margin: 5% 10%;
+  margin: 2% 10%;
   text-align: center;
 }
 

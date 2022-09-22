@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,10 +32,11 @@
           <span class="bar"></span>
         </div>
         <ul class="navbar__menu">
+          <li class="navbar__item"></li>
           <li class="navbar__item">
-            <li class="navbar__item">
-              <a href="/index.html" class="navbar__links">Home</a>
-            </li>
+            <a href="/index.html" class="navbar__links">Home</a>
+          </li>
+          <li>
             <a href="/claudius.html" class="navbar__links">Claudius</a>
           </li>
           <li class="navbar__item">
@@ -45,8 +48,10 @@
           <li class="navbar__btn">
             <a
               href="/self_destruct_verification.html"
-              class="self_destruct_button">
-              <span>Self Destruct</span></a>
+              class="self_destruct_button"
+            >
+              <span>Self Destruct</span></a
+            >
           </li>
         </ul>
       </div>
@@ -77,20 +82,17 @@
           <button>Add</button>
         </div>
         <div class="add__new__date">
-          <input 
-          type="datetime-local" 
-          id="new__date__input" 
-          value="2021-12-20T12:00" 
-          min="2021-01-01T00:00" 
-          max="2023-01-31T23:59"
+          <input
+            type="datetime-local"
+            id="new__date__input"
+            value="2021-12-20T12:00"
+            min="2021-01-01T00:00"
+            max="2023-01-31T23:59"
           />
           <label for="new__date__input"></label>
         </div>
         <div class="checkboxes">
-          <input 
-          type="checkbox" 
-          id="hide" 
-          />
+          <input type="checkbox" id="hide" />
           <label for="hide">Hide List</label>
         </div>
       </form>
@@ -101,8 +103,11 @@
           <li data-view="#view__tomorrow__button" class="week__buttons">
             Tomorrow
           </li>
+          <li data-view="#view__completed__button" class="week__buttons">
+            Completed
+          </li>
         </div>
-
+        <!-- Today Panel -->
         <div class="panel active" id="view__today__button">
           <div id="today__list" class="list">
             <h2 class="today__list">Today</h2>
@@ -118,9 +123,7 @@
                 <span class="reschedule reschedule__tomorrow">tomorrow</span>
               </li>
               <li class="to__do__list__item">
-                <span class="to__do__item"
-                  >Workout</span
-                >
+                <span class="to__do__item">Workout</span>
                 <span class="done">done</span>
                 <span class="reschedule reschedule__tomorrow">tomorrow</span>
               </li>
@@ -132,6 +135,7 @@
             </ul>
           </div>
         </div>
+        <!-- Tomorrow Panel -->
         <div class="panel" id="view__tomorrow__button">
           <div id="item-list" class="list">
             <h2 class="tomorrow__list">Tomorrow</h2>
@@ -140,6 +144,17 @@
                 <span class="to__do__item">Do Something Fun</span>
                 <span class="done">done</span>
                 <span class="reschedule reschedule__today">today</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Completed Panel -->
+        <div class="panel" id="view__completed__button">
+          <div id="item-list" class="list">
+            <h2 class="completed__list">Completed</h2>
+            <ul>
+              <li>
+                <span class="to__do__item" id="completed__items"></span>
               </li>
             </ul>
           </div>
@@ -169,15 +184,15 @@
         <div class="footer__link--wrapper">
           <div class="footer__link--items">
             <h2>Donate</h2>
-            <a href="/to_do_list.html">Pet a Sheep</a>
-            <a href="/to_do_list.html">Ride an Elephant</a>
-            <a href="/to_do_list.html">Chase a Sloth</a>
-            <a href="/to_do_list.html">Taste Lava Salt</a>
+            <a href="/projects/to_do_list.html">Pet a Sheep</a>
+            <a href="/projects/to_do_list.html">Ride an Elephant</a>
+            <a href="/projects/to_do_list.html">Chase a Sloth</a>
+            <a href="/projects/to_do_list.html">Taste Lava Salt</a>
           </div>
           <div class="footer__link--items">
             <h2>Support</h2>
             <a href="/">How it Works</a>
-            <a href="/to_do_list.html">To Do List</a>
+            <a href="/projects/to_do_list.html">To Do List</a>
             <a href="/top_secret.html">Top Secret</a>
             <a href="/">Chum Bucket</a>
           </div>
@@ -190,7 +205,9 @@
               ><i class="fas fa-umbrella-beach"></i>AMBER</a
             >
           </div>
-          <p class="website__rights">KrustyKrabUSA 2021 © All Rights Reserved</p>
+          <p class="website__rights">
+            KrustyKrabUSA 2021 © All Rights Reserved
+          </p>
           <div class="social__icons">
             <a href="/" class="social__icon--link" target="_blank">
               <i class="fab fa-facebook"></i>
