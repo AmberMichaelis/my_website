@@ -62,7 +62,7 @@ body {
 
 /* Self Destruct Verification Button Section */
 .self_destruct_verification_button {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;

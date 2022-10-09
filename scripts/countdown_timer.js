@@ -19,6 +19,6 @@ document.getElementById("demo").innerHTML = days + " days " + hours + " hours "
 // If the count down is finished, write some text
 if (distance < 0) {
 clearInterval(x);
-document.getElementById("demo").innerHTML = "YOU HAVE BEEN DESTRUCTED";
+document.getElementById("demo").innerHTML = "YOU HAVE BEEN DESTRUCTED.";
 }
 }, 1000);

@@ -55,4 +55,8 @@ body {
     color: color(c-purple);
     list-style: none;
   }
+
+  li:hover {
+    color: color(c-lime);
+  }
 }
