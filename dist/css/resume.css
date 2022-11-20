@@ -15,6 +15,7 @@
       -ms-flex-align: center;
           align-items: center;
   min-height: 120vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .matrix__rain__resume__background {
