@@ -25,17 +25,29 @@ body {
   padding-top: 50px;
   text-align: center;
   background-color: color(c-black);
-  display: grid;
-  grid-template-columns: repeat(2, auto);
+  display: flex;
 
   .projects__list {
     margin-bottom: 50px;
+    margin: auto;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 200px 50px 100px;
+    margin-bottom: 20px;
   }
 
   h2 {
     font-size: 2rem;
     color: color(c-aqua);
     padding-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    color: color(c-salmon);
+    padding-bottom: 40px;
   }
 
   p {

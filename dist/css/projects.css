@@ -23,20 +23,34 @@ body {
   padding-top: 50px;
   text-align: center;
   background-color: #131313;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (auto)[2];
-      grid-template-columns: repeat(2, auto);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .projects__body .projects__list {
   margin-bottom: 50px;
+  margin: auto;
+}
+
+.projects__body .project {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 200px 50px 100px;
+      grid-template-columns: 200px 50px 100px;
+  margin-bottom: 20px;
 }
 
 .projects__body h2 {
   font-size: 2rem;
   color: #00ffff;
   padding-bottom: 20px;
+}
+
+.projects__body h3 {
+  font-size: 1.2rem;
+  color: #f77062;
+  padding-bottom: 40px;
 }
 
 .projects__body p {
