@@ -1,0 +1,158 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/css/styles.css" />
+    <link rel="stylesheet" href="/dist/css/leetcode_solutions_styles.css" />
+    <link href="themes/prism.css" rel="stylesheet" />
+    <style>
+      md-block {
+        white-space: normal;
+        font-family: monospace;
+        /* color: white; */
+        text-align: start;
+      }
+    </style>
+
+    <!--Icon Umbrella-Beach Import-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <title>#2: Add Two Numbers</title>
+  </head>
+  <body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/top_secret.html" id="navbar__logo">
+          <i class="fas fa-umbrella-beach"></i>TOP SECRET</a
+        >
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/index.html" class="navbar__links">Home</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/testimonials.html" class="navbar__links">Testimonials</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/claudius.html" class="navbar__links">Claudius</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/projects.html" class="navbar__links">Projects</a>
+          </li>
+          <li class="navbar__btn">
+            <a
+              href="/self_destruct_verification.html"
+              class="self_destruct_button"
+              ><span>Self Destruct</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Scrolling Progress Bar -->
+    <div class="scrolling-progress-container">
+      <div class="progress-bar" id="myBar"></div>
+    </div>
+    <div class="md-container">
+<a href="/top_secret.html" class="back__btn"><i class='fas fa-arrow-left'></i></a>
+        <md-block> 
+# 2. Add Two Numbers (Medium)
+        <md-block>
+You are given two non-empty linked lists representing two non-negative integers. 
+The digits are stored in reverse order, and each of their nodes contains a single digit. 
+Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Example 1:
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+
+Example 2:
+Input: l1 = [0], l2 = [0]
+Output: [0]
+
+Example 3:
+Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
+
+Constraints:
+The number of nodes in each linked list is in the range [1, 100].
+0 <= Node.val <= 9
+It is guaranteed that the list represents a number that does not have leading zeros.
+
+        </md-block> 
+
+<md-block>
+# Solution:
+
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function (l1, l2) {
+    let carry = 0; // determines the value to be carried when adding digits
+    let current = new ListNode(-1); // creates a new linked list with a head as -1
+    let head = current; // points to head of new linked list
+
+    while (l1 || l2 || carry) {
+        let l1Val = l1 ? l1.val : 0; // gets value from list1
+        let l2Val = l2 ? l2.val : 0; // gets value from list2
+
+        let nextDigit = (l1Val + l2Val + carry) % 10; // gets the right most digit of total
+        current.next = new ListNode(nextDigit); // adds the total as a new node in list
+        current = current.next; // points to newly created node
+
+        carry = Math.floor((l1Val + l2Val + carry) / 10); // resets carry value
+
+        l1 = l1 ? l1.next : null;
+        l2 = l2 ? l2.next : null;
+    }
+    return head.next;
+};
+``` 
+</md-block>
+
+<md-block>
+# Explanation:
+<pre>
+  None
+</pre>
+</md-block>
+<br>
+<a href="https://github.com/AmberMichaelis/leet_code/blob/main/2-add_two_numbers.js" 
+  target="_blank"
+  class="github__link">See It On Github</a>
+<br>
+<br>
+<a href="https://leetcode.com/problems/add-two-numbers/" target="_blank" class="leetcode__link">Try It On LeetCode</a>
+      </div>
+
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <script src="prism.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/scrolling_progress_bar.js"></script>
+  </body>
+</html>
