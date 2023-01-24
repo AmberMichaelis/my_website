@@ -1,0 +1,161 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/css/styles.css" />
+    <link rel="stylesheet" href="/dist/css/leetcode_solutions_styles.css" />
+    <link href="themes/prism.css" rel="stylesheet" />
+    <style>
+      md-block {
+        white-space: normal;
+        font-family: monospace;
+        /* color: white; */
+        text-align: start;
+      }
+    </style>
+
+    <!--Icon Umbrella-Beach Import-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <title>#3: Longest Substring Without Repeating Characters</title>
+  </head>
+  <body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/top_secret.html" id="navbar__logo">
+          <i class="fas fa-umbrella-beach"></i>TOP SECRET</a
+        >
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/index.html" class="navbar__links">Home</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/testimonials.html" class="navbar__links">Testimonials</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/claudius.html" class="navbar__links">Claudius</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/projects.html" class="navbar__links">Projects</a>
+          </li>
+          <li class="navbar__btn">
+            <a
+              href="/self_destruct_verification.html"
+              class="self_destruct_button"
+              ><span>Self Destruct</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Scrolling Progress Bar -->
+    <div class="scrolling-progress-container">
+      <div class="progress-bar" id="myBar"></div>
+    </div>
+    <div class="md-container">
+<a href="/top_secret.html" class="back__btn"><i class='fas fa-arrow-left'></i></a>
+        <md-block> 
+# 3. Longest Substring Without Repeating Characters (Medium)
+        <md-block>
+Given a string s, find the length of the longest substring without repeating characters.
+
+Example 1:
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+
+Example 2:
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+
+Example 3:
+Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+Constraints:
+0 <= s.length <= 5 * 10^4
+s consists of English letters, digits, symbols and spaces.
+        </md-block> 
+
+<md-block>
+# Solution:
+
+```javascript
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function (s) {
+    // Store counters for the the start of the window and the longest string's length
+    var startOfWindow = 0,
+        longestStringLength = 0;
+
+    // Initialise a Map to store the characters of the current string
+    var characterMap = new Map();
+
+    // Loop through the provided string
+    for (let i = 0; i < s.length; i++) {
+        // Store the current character, and its position in the Map (saves repeatedly looking it up)
+        let currentCharacter = s[i];
+        let currentCharacterPositionInMap = characterMap.get(currentCharacter);
+
+        // Check if current character exists in the Map, and was found within the current window
+        if (currentCharacterPositionInMap >= startOfWindow) {
+            // Move the current window to start after the first instance of the current character
+            startOfWindow = currentCharacterPositionInMap + 1;
+        }
+
+        // Add the current character to the Map with its position in the string
+        characterMap.set(currentCharacter, i);
+
+        // Store the current string length if bigger than the existing record
+        longestStringLength = Math.max(
+            longestStringLength,
+            i - startOfWindow + 1
+        );
+        console.log(characterMap, longestStringLength)
+    }
+
+    return longestStringLength;
+};
+``` 
+</md-block>
+
+<md-block>
+# Explanation:
+<pre>
+  None
+</pre>
+</md-block>
+<br>
+<a href="https://github.com/AmberMichaelis/leet_code/blob/main/3-longest_substring_without_repeating_characters.js" 
+  target="_blank"
+  class="github__link">See It On Github</a>
+<br>
+<br>
+<a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" class="leetcode__link">Try It On LeetCode</a>
+      </div>
+
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <script src="prism.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/scrolling_progress_bar.js"></script>
+  </body>
+</html>
