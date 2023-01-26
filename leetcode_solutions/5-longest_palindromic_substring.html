@@ -1,0 +1,167 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/css/styles.css" />
+    <link rel="stylesheet" href="/dist/css/leetcode_solutions_styles.css" />
+    <link href="themes/prism.css" rel="stylesheet" />
+    <style>
+      md-block {
+        white-space: normal;
+        font-family: monospace;
+        /* color: white; */
+        text-align: start;
+      }
+    </style>
+
+    <!--Icon Umbrella-Beach Import-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <title>#5: Longest Palindromic Substring</title>
+  </head>
+  <body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/top_secret.html" id="navbar__logo">
+          <i class="fas fa-umbrella-beach"></i>TOP SECRET</a
+        >
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/index.html" class="navbar__links">Home</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/testimonials.html" class="navbar__links">Testimonials</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/claudius.html" class="navbar__links">Claudius</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/projects.html" class="navbar__links">Projects</a>
+          </li>
+          <li class="navbar__btn">
+            <a
+              href="/self_destruct_verification.html"
+              class="self_destruct_button"
+              ><span>Self Destruct</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Scrolling Progress Bar -->
+    <div class="scrolling-progress-container">
+      <div class="progress-bar" id="myBar"></div>
+    </div>
+    <div class="md-container">
+<a href="/top_secret.html" class="back__btn"><i class='fas fa-arrow-left'></i></a>
+        <md-block> 
+#5: Longest Palindromic Substring (Medium)
+        <md-block>
+Given a string s, return the longest palindromic substring in s.
+ A string is called a palindrome string if the reverse of that string is the same as the original string.
+ 
+ Example 1:
+ 
+ Input: s = "babad"
+ Output: "bab"
+ Explanation: "aba" is also a valid answer.
+ 
+ Example 2:
+ 
+ Input: s = "cbbd"
+ Output: "bb"
+  
+ Constraints:
+ 
+ 1 <= s.length <= 1000
+ s consist of only digits and English letters.
+        </md-block> 
+
+<md-block>
+# Solution:
+
+```javascript
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function (string) {
+    let longestPalLength = 0;
+    let longestPalLeft = 0;
+    let longestPalRight = 0;
+
+    var getLongestPalindrome = function (leftPosition, rightPosition) {
+        // While there is space to expand, and the expanded strings match
+        while (
+            leftPosition >= 0 &&
+            rightPosition < string.length &&
+            string[leftPosition] === string[rightPosition]
+        ) {
+            //expand in each direction.
+            leftPosition--;
+            rightPosition++;
+        }
+
+        // Store the longest palindrome (if it's the longest one found so far)
+        if (rightPosition - leftPosition > longestPalLength) {
+            longestPalLeft = leftPosition + 1;
+            longestPalRight = rightPosition - 1;
+            longestPalLength = longestPalRight - longestPalLeft + 1;
+        }
+    };
+
+    // Loop through the letters
+    for (let i = 0; i < string.length; i++) {
+        // Find the longest odd palendrome
+        getLongestPalindrome(i, i + 1);
+
+        // Find the longest even palendrome
+        getLongestPalindrome(i, i);
+
+        // Check if a longer palindrome cannot be found
+        if ((string.length - i) * 2 < longestPalLength) {
+            // Break out to avoid unnecessary computation
+            break;
+        }
+    }
+
+    return string.slice(longestPalLeft, longestPalRight + 1);
+};
+``` 
+</md-block>
+
+<md-block>
+# Explanation:
+<pre>
+  None
+</pre>
+</md-block>
+<br>
+<a href="https://github.com/AmberMichaelis/leet_code/blob/main/5-longest_palindromic_substring.js" 
+  target="_blank"
+  class="github__link">See It On Github</a>
+<br>
+<br>
+<a href="https://leetcode.com/problems/longest-palindromic-substring/" target="_blank" class="leetcode__link">Try It On LeetCode</a>
+      </div>
+
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <script src="prism.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/scrolling_progress_bar.js"></script>
+  </body>
+</html>
