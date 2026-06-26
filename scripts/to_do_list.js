@@ -13,13 +13,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // main variables
   const todayList = document.querySelector('#today__list ul');
+  const completedList = document.querySelector('#completed__items')
   const forms = document.forms;
 
   // done items
+  let completedTasks = [];
   todayList.addEventListener('click', (e) => {
     if (e.target.className == 'to__do__item' || e.target.className == 'done') {
+      ;
       const li = e.target.parentElement;
-      li.remove();
+      const checkedTask = li.firstElementChild.innerText;
+      li.remove()
+      completedTasks.push(checkedTask);
+      completedList.innerText = completedTasks;
     }
   });
 
@@ -95,5 +101,4 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
-
 })
