@@ -11,7 +11,7 @@ class Obstacle {
         this.randomize = Math.floor(Math.random() * 30 + 30);
         this.carType = Math.floor(Math.random() * numberOfCars);
     }
-    draw(){
+    draw() {
         if (this.type === 'turtle') {
             if (frame % this.randomize === 0) {
                 if (this.frameX >= 1) {
@@ -20,31 +20,35 @@ class Obstacle {
                     this.frameX++;
                 }
             }
-                ctx1.drawImage(turtle, this.frameX * 70, this.frameY * 70, 70, 70, this.x, this.y, this.width, this.height);
-            } else if (this.type === 'log') {
-                ctx1.drawImage(log, this.x, this.y, this.width, this.height);
-            } else {
-                ctx2.drawImage(car, this.frameX * this.width, this.carType * this.height, grid * 2, grid, this.x, this.y, this.width, this.height);
-            }
-            
+            ctx1.drawImage(turtle, this.frameX * 70, this.frameY * 70, 70, 70, this.x, this.y, this.width, this.height);
+        } else if (this.type === 'log') {
+            ctx1.drawImage(log, this.x, this.y, this.width, this.height);
+        } else {
+            ctx2.drawImage(car, this.frameX * this.width, this.carType * this.height, grid * 2, grid, this.x, this.y, this.width, this.height);
+        }
+
         // ctx3.fillStyle = "red";
         // ctx3.fillRect(this.x, this.y, this.width, this.height);
     }
-    update(){
+    getMoveSpeed() {
+        const speedModifier = gameSpeed * 0.5;
+        return this.speed > 0
+            ? this.speed + speedModifier
+            : this.speed - speedModifier;
+    }
+
+    update() {
         // moves obstacles horizontally
-        this.x += this.speed + gameSpeed;
+        this.x += this.getMoveSpeed();
+
         // resets obstacles behind edge after moving off screen
-        if (this.speed > 0) {
-            if(this.x > canvas.width + this.width) {
-                this.x = 0 - this.width;
-                this.carType = Math.floor(Math.random() * numberOfCars);
-            }
-        } else {
-            if(this.x < 0 - this.width) {
-                this.frameX = 1;
-                this.x = canvas.width + this.width;
-                this.carType = Math.floor(Math.random() * numberOfCars);
-            }
+        if (this.speed > 0 && this.x > canvas.width + this.width) {
+            this.x = 0 - this.width;
+            this.carType = Math.floor(Math.random() * numberOfCars);
+        } else if (this.speed < 0 && this.x < 0 - this.width) {
+            this.frameX = 1;
+            this.x = canvas.width + this.width;
+            this.carType = Math.floor(Math.random() * numberOfCars);
         }
     }
 }
@@ -99,12 +103,17 @@ function handleObstacles() {
 
         for (let i = 0; i < logsArray.length; i++) {
             if (collision(frogger, logsArray[i])) {
-                frogger.x += logsArray[i].speed + gameSpeed;
+                frogger.x += logsArray[i].getMoveSpeed();
+                // if (logsArray[i].speed > 0) {
+                //     frogger.x += logsArray[i].speed + gameSpeed;
+                // } else {
+                //     frogger.x += logsArray[i].speed - gameSpeed;
+                // }
                 safe = true;
             }
         }
         if (!safe) {
-            for (let i=0; i < 30; i++){
+            for (let i = 0; i < 30; i++) {
                 ripplesArray.unshift(new Particle(frogger.x, frogger.y));
             }
             resetGame();

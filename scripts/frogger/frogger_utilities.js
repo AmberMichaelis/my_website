@@ -39,7 +39,7 @@ window.addEventListener('keyup', function(e) {
 /* Resets frog to beginning after moving past top of canvas */
 function scored() {
     score++;
-    gameSpeed += 0.2;
+    gameSpeed += 1;
     frogger.x = canvas.width/2 - frogger.width/2;
     frogger.y = canvas.height - frogger.height - 40;
 }
